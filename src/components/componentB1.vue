@@ -1,13 +1,16 @@
 <template>
-    <h4>组件B1</h4>
+    <div>
+        <h4>组件B1</h4>
 
     <!-- <button @click="$emit('myevent', 5)">传递数据给父组件1</button>
     <button @click="clickHandle">传递数据给父组件2</button> -->
 
     <!-- <input type="text" v-model="inputValue"> -->
 
-    <p>{{ title }}</p>
-    <p>{{ onFun("函数传递") }}</p>
+    
+        <p>{{ title }}</p>
+        <p>{{ onFun("函数传递") }}</p>
+    </div>
 
 
     

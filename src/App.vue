@@ -1,4 +1,5 @@
 <template>
+  <!-- 模板语法 -->
   <div>
     <h2>模板语法</h2>
     <p>{{ message }} </p>
@@ -11,6 +12,7 @@
 
   </div>
 
+  <!-- 属性绑定 -->
   <div>
     <h2>属性绑定</h2>
     <p v-bind:id="id" v-bind:class="class1">测试</p>
@@ -19,6 +21,7 @@
     <p v-bind="obj">测试</p>
   </div>
 
+  <!-- 条件渲染 -->
   <div>
     <h2>条件渲染</h2>
 
@@ -33,6 +36,7 @@
     <p v-show="isOk">显示</p>
   </div>
 
+  <!-- 列表渲染 -->
   <div>
     <h2>列表渲染</h2>
     <p v-for="name, index in names" :key="index">{{ name }}</p>
@@ -48,7 +52,7 @@
     </div>
   </div>
 
-
+  <!-- 事件处理 -->
   <div>
     <h2>事件处理</h2>
     <p>{{ count }}</p>
@@ -71,6 +75,7 @@
 
   </div>
 
+  <!-- 数组变化侦听 -->
   <div>
     <h2>数组变化侦听</h2>
     <button @click="addName">添加数据</button>
@@ -80,6 +85,7 @@
 
   </div>
 
+  <!-- class绑定 -->
   <div>
     <h2>class绑定</h2>
     <p :class="{ active: active, class1: class1 }">测试</p>
@@ -90,6 +96,7 @@
 
   </div>
 
+  <!-- style绑定 -->
   <div>
     <h2>style绑定</h2>
     <p :style="{ color: 'red', fontSize: '20px', fontWeight: 'bold' }">测试</p>
@@ -98,12 +105,14 @@
     <p :style="[styleObj]">测试3</p>
   </div>
 
+  <!-- 侦听器 -->
   <div>
     <h2>侦听器</h2>
     <p>{{ message }}</p>
     <input type="text" v-model="message">
   </div>
 
+  <!-- 表单输入与绑定 -->
   <div>
     <h2>表单输入与绑定</h2>
 
@@ -134,6 +143,7 @@
     </select>
   </div>
 
+  <!-- 模板引用 -->
   <div>
     <h2>模板引用（操作DOM）</h2>
     <div ref="message">{{ message }}</div>
@@ -142,65 +152,78 @@
     <button @click="changeMessage">修改</button>
   </div>
 
+  <!-- 动态组件 -->
   <div>
     <h2>动态组件</h2>
     <component1/>
     <component1></component1>
   </div>
 
+  <!-- 组件传递数据 -->
   <div>
     <h2>组件传递数据</h2>
     <componentA/>
   </div>
 
+  <!-- 组件事件（子组件给父组件传递数据） -->
   <div>
     <h2>组件事件（子组件给父组件传递数据）</h2>
     <componentB/>
   </div>
 
-
+<!-- 透传属性 -->
  <div>
     <h2>透传属性</h2>
     <!-- 子组件必须是唯一根节点 -->
     <attrComponent id="111" class="attr"/>
   </div>
 
+  <!-- 插槽 -->
   <div>
-    <h2>插槽</h2>
+    <h2>普通插槽</h2>
     <slotComponent >
       
-      <!-- <span style="color: red;">插槽内容</span>  
-      <p>{{ slotContent }} </p> -->
+      <span style="color: red;">插槽内容</span>  
+      <!-- slotContent 应该在父组件定义 -->
+      <p>{{ slotContent }}——1 </p>
       
     </slotComponent>
+  </div>
 
-
+  <div>
+    <h2>具名插槽</h2>
     <slotComponent>
-
-     <!-- 具名插槽1 -->
+      <!-- 具名插槽1 -->
       <template v-slot:slot1>
         <p>具名插槽1内容 </p>
       </template>
 
       <!-- 具名插槽2 -->
       <template #slot2>
-        <p>具名插槽2内容111</p>
+        <p>具名插槽2内容</p>
       </template>
-
-
-      <!-- 作用域插槽 -->
-      <template v-slot="slotProps">
-        <p>{{ slotContent }} -- {{ slotProps.msg }}</p>
-      </template>
-
-      <!-- 具名作用域插槽  -->
-      <template v-slot:slot3="slotProps">
-        <p>{{ slotContent }} -- {{ slotProps.msg }}</p>
-      </template>
-      
-
     </slotComponent>
-
+  </div>
+    
+<!-- 作用域插槽 -->
+  <div>
+    <h2>作用域插槽</h2>
+    <slotComponent>
+      <template v-slot="slotProps">
+        <p>{{ slotContent }} -- {{ slotProps.code }}</p>
+      </template>
+    </slotComponent>
+  </div>
+<!-- 具名作用域插槽  -->
+  <div>
+    <h2>具名作用域插槽</h2>
+    <div>
+      <slotComponent>
+        <template v-slot:slot4="slotProps">
+          <p>{{ slotContent }} -- {{ slotProps.code }}</p>
+        </template>
+      </slotComponent>
+    </div>
   </div>
 
 </template>
@@ -270,10 +293,10 @@ export default {
       active: 'active',
 
       classObj: {
-        active: true,
-        class1: true,
-        // active:'active',
-        // class1:'class1',
+        // active: true,
+        // class1: true,
+        active:'active',
+        class1:'class1',
       },
       classArr: ['active', 'class1'],
 

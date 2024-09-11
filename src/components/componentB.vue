@@ -1,13 +1,16 @@
 <template>
-    <h4>组件B</h4>
+    <div>
+        <h4>组件B</h4>
 
-    <!-- <componentB1 title="子传父（自定义事件）" @myevent="getHandle" />
+        <!-- <componentB1 title="子传父（自定义事件）" @myevent="getHandle" />
 
-    <p>输入内容：{{ inputValue }}</p>
-    <componentB1 title="子传父（自定义事件）" @inputEvent="getInputValue"/> -->
-    <p>{{ msg }}</p>
+        <p>输入内容：{{ inputValue }}</p>
+        <componentB1 title="子传父（自定义事件）" @inputEvent="getInputValue"/> -->
+        <p>{{ msg }}</p>
+
+        <componentB1 :title="'子传父（函数）'" :onFun = "onFun" />
+    </div>
     
-    <componentB1 :title="'子传父（函数）'" :onFun = "onFun" />
     
 </template>
 
@@ -24,8 +27,9 @@ export default {
 
     data(){
         return{
-            inputValue:"",
-            msg:""
+            msg:"",
+            inputValue:""
+            
         }
     },
     methods:{
